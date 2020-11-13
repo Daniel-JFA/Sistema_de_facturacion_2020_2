@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+
+
+
 
 namespace Sistema_de_facturacion_2020_2
 {
@@ -44,12 +48,27 @@ namespace Sistema_de_facturacion_2020_2
 
         private void BtnValidar_Click(object sender, EventArgs e)
         {
-            if (TxtPassword.Text == "usuario" && TxtUsuario.Text == "usuario")
+            string respuesta = "";
+
+            if ( TxtUsuario.Text != "" && TxtPassword.Text != string.Empty)
             {
-                FrmPrincipal mainMenu = new FrmPrincipal();
-                mainMenu.Show();
-                this.Hide();
-                
+                AccesoDatos Acceso = new AccesoDatos();
+                respuesta = Acceso.ValidarUsuario(TxtUsuario.Text, TxtPassword.Text);
+                if (respuesta != "")
+                {
+                    MessageBox.Show("Venvenuti : " + respuesta);
+
+                    FrmPrincipal mainMenu = new FrmPrincipal();
+                    mainMenu.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Nea usted no tiene autorizacion: " + respuesta);
+                    TxtPassword.Text = "";
+                    TxtUsuario.Text = "";
+                    TxtUsuario.Focus();
+                }
             }
         }
     }
