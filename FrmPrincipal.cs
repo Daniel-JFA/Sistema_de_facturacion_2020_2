@@ -55,5 +55,16 @@ namespace Sistema_de_facturacion_2020_2
             FrmClientes FrmCliente = new FrmClientes();
             AbrirForm(FrmCliente);
         }
+
+        private void BtnEmpleados_Click(object sender, EventArgs e)
+        {
+            FrmEmpleados FrmEmpleado = new FrmEmpleados();
+            AbrirForm(FrmEmpleado);
+        }
+
+        private void TabOpcionesMenu_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

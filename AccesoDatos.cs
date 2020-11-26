@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Sistema_de_facturacion_2020_2
 {
@@ -18,13 +19,13 @@ namespace Sistema_de_facturacion_2020_2
         SqlDataAdapter da;
         DataTable dt;
         DataSet ds;
-        SqlDataReader dr;
+
         public void AbrirBd()
         {
             try
             {
                 //conexion = new SqlConnection("Data Source=DESKTOP-M6DBLTR; Initial Catalog=[DbFacturas];Integrated Security=true");
-                SqlConnection conexion = new SqlConnection("Data Source=.;Initial Catalog=DbFacturas;Integrated Security=True");
+                SqlConnection conexion = new SqlConnection(@"Data Source=.;Initial Catalog=DbFacturas;Integrated Security=True");
                 conexion.Open();
             }
             catch (Exception ex)
@@ -39,9 +40,9 @@ namespace Sistema_de_facturacion_2020_2
             {
                 conexion.Close();
             }
-            catch (Exception ex)
+            catch (Exception pp)
             {
-                MessageBox.Show("Pana fallo cerrando la conexion, se le olvido programar cerrando base de datos?" + ex);
+                MessageBox.Show("Pana fallo cerrando la conexion, se le olvido programar cerrando base de datos?" + pp);
             }
         }
 
@@ -49,10 +50,12 @@ namespace Sistema_de_facturacion_2020_2
         {
             try
             {
-                
+                SqlConnection conexion = new SqlConnection(@"Data Source=.;Initial Catalog=DbFacturas;Integrated Security=True");
+                conexion.Open();
                 string strEmpleado="";
                 //string sentencia = $"SELECT e.strNombre, e.IdRolEmpleado FROM TblSeguridad s JOIN TblEmpleado e ON s.IdEmpleado  WHERE StrUsuario= '{StrUsuario}' and StrClave = '{StrClave}'";
-                string sentencia = $"SELECT * FROM TblSeguridad  WHERE StrUsuario= '{StrUsuario}' and StrClave = '{StrClave}'";
+                string sentencia = $"SELECT e.strNombre, e.IdRolEmpleado From TblSeguridad s JOIN TblEmpleado e ON s.IdEmpleado = e.IdEmpleado WHERE StrUsuario = '{StrUsuario}' and StrClave = '{StrClave}'";
+   
                 AbrirBd();
                 cmd = new SqlCommand();
                 cmd.Connection = conexion;
@@ -60,6 +63,7 @@ namespace Sistema_de_facturacion_2020_2
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandTimeout = 10;
                 LectorDatos = cmd.ExecuteReader();
+
                 while (LectorDatos.Read())
                 {
                     strEmpleado = Convert.ToString(LectorDatos.GetValue(0));
@@ -76,5 +80,31 @@ namespace Sistema_de_facturacion_2020_2
                 return "";
             }
         }
+
+        public DataTable CargaTabla(string tabla, string strCondicion)
+        {
+            try
+            {
+                SqlConnection conexion = new SqlConnection(@"Data Source=.;Initial Catalog=DbFacturas;Integrated Security=True");
+                conexion.Open();
+                AbrirBd();
+                string Sql = "SELECT * FROM " + tabla + " " + strCondicion;
+                da = new SqlDataAdapter(Sql, conexion);
+                ds = new DataSet();
+                da.Fill(ds, tabla);
+                DataTable dt = new DataTable();
+                dt = ds.Tables[tabla];
+                //CerrarBd();
+                return dt;
+             }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Fallo la consulta : " + ex.ToString());
+                return null;
+            }
+        }
+
+
+
     }
 }

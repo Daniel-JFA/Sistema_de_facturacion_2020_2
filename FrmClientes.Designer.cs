@@ -172,6 +172,7 @@
             // 
             // BtnEliminar
             // 
+            this.BtnEliminar.AutoSize = true;
             this.BtnEliminar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BtnEliminar.Depth = 0;
             this.BtnEliminar.Icon = null;
@@ -179,13 +180,14 @@
             this.BtnEliminar.MouseState = MaterialSkin.MouseState.HOVER;
             this.BtnEliminar.Name = "BtnEliminar";
             this.BtnEliminar.Primary = true;
-            this.BtnEliminar.Size = new System.Drawing.Size(136, 23);
+            this.BtnEliminar.Size = new System.Drawing.Size(83, 36);
             this.BtnEliminar.TabIndex = 9;
             this.BtnEliminar.Text = "ELIMINAR";
             this.BtnEliminar.UseVisualStyleBackColor = true;
             // 
             // ACTUALIZAR
             // 
+            this.ACTUALIZAR.AutoSize = true;
             this.ACTUALIZAR.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ACTUALIZAR.Depth = 0;
             this.ACTUALIZAR.Icon = null;
@@ -193,13 +195,14 @@
             this.ACTUALIZAR.MouseState = MaterialSkin.MouseState.HOVER;
             this.ACTUALIZAR.Name = "ACTUALIZAR";
             this.ACTUALIZAR.Primary = true;
-            this.ACTUALIZAR.Size = new System.Drawing.Size(136, 23);
+            this.ACTUALIZAR.Size = new System.Drawing.Size(103, 36);
             this.ACTUALIZAR.TabIndex = 10;
             this.ACTUALIZAR.Text = "ACTUALIZAR";
             this.ACTUALIZAR.UseVisualStyleBackColor = true;
             // 
             // BtnNuevo
             // 
+            this.BtnNuevo.AutoSize = true;
             this.BtnNuevo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BtnNuevo.Depth = 0;
             this.BtnNuevo.Icon = null;
@@ -207,13 +210,15 @@
             this.BtnNuevo.MouseState = MaterialSkin.MouseState.HOVER;
             this.BtnNuevo.Name = "BtnNuevo";
             this.BtnNuevo.Primary = true;
-            this.BtnNuevo.Size = new System.Drawing.Size(136, 23);
+            this.BtnNuevo.Size = new System.Drawing.Size(66, 36);
             this.BtnNuevo.TabIndex = 11;
             this.BtnNuevo.Text = "NUEVO";
             this.BtnNuevo.UseVisualStyleBackColor = true;
+            this.BtnNuevo.Click += new System.EventHandler(this.BtnNuevo_Click);
             // 
             // BtnBuscar
             // 
+            this.BtnBuscar.AutoSize = true;
             this.BtnBuscar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BtnBuscar.Depth = 0;
             this.BtnBuscar.Icon = null;
@@ -221,13 +226,14 @@
             this.BtnBuscar.MouseState = MaterialSkin.MouseState.HOVER;
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Primary = true;
-            this.BtnBuscar.Size = new System.Drawing.Size(128, 23);
+            this.BtnBuscar.Size = new System.Drawing.Size(74, 36);
             this.BtnBuscar.TabIndex = 12;
             this.BtnBuscar.Text = "BUSCAR";
             this.BtnBuscar.UseVisualStyleBackColor = true;
             // 
             // BtnSalirClientes
             // 
+            this.BtnSalirClientes.AutoSize = true;
             this.BtnSalirClientes.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BtnSalirClientes.Depth = 0;
             this.BtnSalirClientes.Icon = null;
@@ -235,7 +241,7 @@
             this.BtnSalirClientes.MouseState = MaterialSkin.MouseState.HOVER;
             this.BtnSalirClientes.Name = "BtnSalirClientes";
             this.BtnSalirClientes.Primary = true;
-            this.BtnSalirClientes.Size = new System.Drawing.Size(142, 23);
+            this.BtnSalirClientes.Size = new System.Drawing.Size(58, 36);
             this.BtnSalirClientes.TabIndex = 13;
             this.BtnSalirClientes.Text = "SALIR";
             this.BtnSalirClientes.UseVisualStyleBackColor = true;

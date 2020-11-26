@@ -36,5 +36,10 @@ namespace Sistema_de_facturacion_2020_2
         {
             this.Close();
         }
+
+        private void BtnNuevo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

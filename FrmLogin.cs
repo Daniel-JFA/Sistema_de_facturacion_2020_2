@@ -48,23 +48,23 @@ namespace Sistema_de_facturacion_2020_2
 
         private void BtnValidar_Click(object sender, EventArgs e)
         {
-            string respuesta = "";
+            string res = "";
 
-            if ( TxtUsuario.Text != "" && TxtPassword.Text != string.Empty)
+            if (TxtUsuario.Text != "" && TxtPassword.Text != "")
             {
                 AccesoDatos Acceso = new AccesoDatos();
-                respuesta = Acceso.ValidarUsuario(TxtUsuario.Text, TxtPassword.Text);
-                if (respuesta != "")
-                {
-                    MessageBox.Show("Venvenuti : " + respuesta);
+                res = Acceso.ValidarUsuario(TxtUsuario.Text, TxtPassword.Text);
 
+                if (res != "")
+                {
+                    MessageBox.Show("Venvenuti aqui: "+TxtUsuario.Text + TxtPassword.Text);
                     FrmPrincipal mainMenu = new FrmPrincipal();
                     mainMenu.Show();
                     this.Hide();
                 }
                 else
                 {
-                    MessageBox.Show("Nea usted no tiene autorizacion: " + respuesta);
+                    MessageBox.Show("Nea usted no tiene autorizacion: " + res+TxtUsuario.Text+TxtPassword.Text);
                     TxtPassword.Text = "";
                     TxtUsuario.Text = "";
                     TxtUsuario.Focus();
