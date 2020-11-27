@@ -104,6 +104,33 @@ namespace Sistema_de_facturacion_2020_2
             }
         }
 
+        public string EjecutarComando(string sentencia)
+        {
+            string salida = "los datos se actualizaron correctamente";
+            try 
+            {
+                SqlConnection conexion = new SqlConnection(@"Data Source=.;Initial Catalog=DbFacturas;Integrated Security=True");
+                conexion.Open();
+                int retornado;
+                AbrirBd();
+                cmd = new SqlCommand(sentencia, conexion);
+                retornado = cmd.ExecuteNonQuery();
+                //CerrarBd();
+                if (retornado > 0)
+                {
+                    salida = "ok";
+                }
+                else
+                {
+                    salida = "fallo";
+                }
+            }
+            catch(Exception ex)
+            {
+                salida = "fallo insercion" + ex;
+            }
+            return salida;
+        }
 
 
     }

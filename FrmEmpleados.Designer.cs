@@ -38,20 +38,20 @@
             this.TxtTelefonoEmpleado = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.TxtEmailEmpleado = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BtnBuscar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.TxtIdEmpleado = new System.Windows.Forms.TextBox();
+            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.LblTitulo = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.BtnBuscar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.TxtBuscarCliente = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.BtnSalirClientes = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.TxtIdEmpleado = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.DgEmpleado)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -98,6 +98,7 @@
             this.ACTUALIZAR.TabIndex = 15;
             this.ACTUALIZAR.Text = "ACTUALIZAR";
             this.ACTUALIZAR.UseVisualStyleBackColor = true;
+            this.ACTUALIZAR.Click += new System.EventHandler(this.ACTUALIZAR_Click);
             // 
             // BtnEliminar
             // 
@@ -211,6 +212,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
+            // BtnBuscar
+            // 
+            this.BtnBuscar.AutoSize = true;
+            this.BtnBuscar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BtnBuscar.Depth = 0;
+            this.BtnBuscar.Icon = null;
+            this.BtnBuscar.Location = new System.Drawing.Point(484, 64);
+            this.BtnBuscar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BtnBuscar.Name = "BtnBuscar";
+            this.BtnBuscar.Primary = true;
+            this.BtnBuscar.Size = new System.Drawing.Size(74, 36);
+            this.BtnBuscar.TabIndex = 13;
+            this.BtnBuscar.Text = "BUSCAR";
+            this.BtnBuscar.UseVisualStyleBackColor = true;
+            this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.TxtIdEmpleado);
@@ -222,6 +239,29 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "DATOS BASICOS";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // TxtIdEmpleado
+            // 
+            this.TxtIdEmpleado.Location = new System.Drawing.Point(6, 19);
+            this.TxtIdEmpleado.Name = "TxtIdEmpleado";
+            this.TxtIdEmpleado.Size = new System.Drawing.Size(20, 20);
+            this.TxtIdEmpleado.TabIndex = 29;
+            this.TxtIdEmpleado.Text = "null\r\n";
+            this.TxtIdEmpleado.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // materialLabel3
+            // 
+            this.materialLabel3.AutoSize = true;
+            this.materialLabel3.Depth = 0;
+            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel3.Location = new System.Drawing.Point(282, 90);
+            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel3.Name = "materialLabel3";
+            this.materialLabel3.Size = new System.Drawing.Size(108, 19);
+            this.materialLabel3.TabIndex = 28;
+            this.materialLabel3.Text = "materialLabel3";
+            this.materialLabel3.Click += new System.EventHandler(this.materialLabel3_Click);
             // 
             // LblTitulo
             // 
@@ -272,20 +312,6 @@
             this.materialLabel1.Text = "materialLabel1";
             this.materialLabel1.Click += new System.EventHandler(this.materialLabel1_Click);
             // 
-            // materialLabel3
-            // 
-            this.materialLabel3.AutoSize = true;
-            this.materialLabel3.Depth = 0;
-            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(282, 90);
-            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(108, 19);
-            this.materialLabel3.TabIndex = 28;
-            this.materialLabel3.Text = "materialLabel3";
-            this.materialLabel3.Click += new System.EventHandler(this.materialLabel3_Click);
-            // 
             // materialLabel4
             // 
             this.materialLabel4.AutoSize = true;
@@ -321,22 +347,6 @@
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 24;
             // 
-            // BtnBuscar
-            // 
-            this.BtnBuscar.AutoSize = true;
-            this.BtnBuscar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BtnBuscar.Depth = 0;
-            this.BtnBuscar.Icon = null;
-            this.BtnBuscar.Location = new System.Drawing.Point(484, 64);
-            this.BtnBuscar.MouseState = MaterialSkin.MouseState.HOVER;
-            this.BtnBuscar.Name = "BtnBuscar";
-            this.BtnBuscar.Primary = true;
-            this.BtnBuscar.Size = new System.Drawing.Size(74, 36);
-            this.BtnBuscar.TabIndex = 13;
-            this.BtnBuscar.Text = "BUSCAR";
-            this.BtnBuscar.UseVisualStyleBackColor = true;
-            this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
-            // 
             // TxtBuscarCliente
             // 
             this.TxtBuscarCliente.Depth = 0;
@@ -370,15 +380,6 @@
             this.BtnSalirClientes.Text = "SALIR";
             this.BtnSalirClientes.UseVisualStyleBackColor = true;
             this.BtnSalirClientes.Click += new System.EventHandler(this.BtnSalirClientes_Click);
-            // 
-            // TxtIdEmpleado
-            // 
-            this.TxtIdEmpleado.Location = new System.Drawing.Point(6, 19);
-            this.TxtIdEmpleado.Name = "TxtIdEmpleado";
-            this.TxtIdEmpleado.Size = new System.Drawing.Size(20, 20);
-            this.TxtIdEmpleado.TabIndex = 29;
-            this.TxtIdEmpleado.Text = "null\r\n";
-            this.TxtIdEmpleado.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // FrmEmpleados
             // 

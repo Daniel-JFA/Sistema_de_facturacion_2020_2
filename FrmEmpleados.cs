@@ -123,5 +123,10 @@ namespace Sistema_de_facturacion_2020_2
         {
             Nuevo();
         }
+
+        private void ACTUALIZAR_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

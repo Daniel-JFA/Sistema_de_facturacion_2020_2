@@ -17,6 +17,63 @@ namespace Sistema_de_facturacion_2020_2
             InitializeComponent();
         }
 
+        private Boolean validar()
+        {
+            Boolean errorCampos = true;
+            if(TxtNombreCliente.Text == string.Empty)
+            {
+                MensajeError.SetError(TxtNombreCliente, "Debe ingresar el nombre del empleado");
+                TxtNombreCliente.Focus();
+                errorCampos = false;
+            }
+            else { MensajeError.SetError(TxtNombreCliente, ""); }
+
+            return errorCampos;
+        }
+
+        public Boolean Guardar()
+        {
+            Boolean actualizado = false;
+            if (validar())
+            {
+                try
+                {
+
+                    AccesoDatos Acceso = new AccesoDatos();
+                    string sentencia = $"EXEC [actualizar_cliente] '{TxtIdCliente.Text}','{TxtNombreCliente.Text}','{TxtDocumento.Text}','{TxtDireccion.Text}','{TxtTelefono.Text}','{TxtEmail.Text}','Daniel','{DateTime.Now.ToShortDateString()}'";
+                    MessageBox.Show(Acceso.EjecutarComando(sentencia));
+                    LlenarGrid();
+                    actualizado = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Fallo insercion: " + ex);
+                    actualizado = false;
+                }
+            }
+            return actualizado;
+        }
+
+        private void LlenarGrid()
+        {
+
+            DataTable dt = new DataTable();
+            AccesoDatos Acceso = new AccesoDatos();
+            dt = Acceso.CargaTabla("[TblClientes]", "");
+            DgCliente.DataSource = dt;
+        }
+
+        public void Nuevo()
+        {
+            TxtIdCliente.Text = "null";
+            TxtNombreCliente.Text = "";
+            TxtDocumento.Text = "";
+            TxtDireccion.Text = "";
+            TxtTelefono.Text = "";
+            TxtEmail.Text = "";
+
+        }
+
         private void materialLabel1_Click(object sender, EventArgs e)
         {
 
@@ -38,6 +95,26 @@ namespace Sistema_de_facturacion_2020_2
         }
 
         private void BtnNuevo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmClientes_Load(object sender, EventArgs e)
+        {
+            LlenarGrid();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ACTUALIZAR_Click(object sender, EventArgs e)
+        {
+            Guardar();
+        }
+
+        private void BtnEliminar_Click(object sender, EventArgs e)
         {
 
         }

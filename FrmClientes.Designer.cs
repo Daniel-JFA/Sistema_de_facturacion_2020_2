@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DgCliente = new System.Windows.Forms.DataGridView();
             this.TxtTelefono = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.TxtDireccion = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.TxtDocumento = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -37,11 +38,14 @@
             this.TxtEmail = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.TxtBuscarCliente = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.BtnEliminar = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.ACTUALIZAR = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.BtnActualizarClientes = new MaterialSkin.Controls.MaterialRaisedButton();
             this.BtnNuevo = new MaterialSkin.Controls.MaterialRaisedButton();
             this.BtnBuscar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.BtnSalirClientes = new MaterialSkin.Controls.MaterialRaisedButton();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.TxtIdCliente = new System.Windows.Forms.TextBox();
+            this.MensajeError = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.DgCliente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MensajeError)).BeginInit();
             this.SuspendLayout();
             // 
             // materialLabel1
@@ -58,15 +62,15 @@
             this.materialLabel1.Text = "ADMINISTRACION DE CLIENTES";
             this.materialLabel1.Click += new System.EventHandler(this.materialLabel1_Click);
             // 
-            // dataGridView1
+            // DgCliente
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(60, 306);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(445, 116);
-            this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.DgCliente.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.DgCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgCliente.Location = new System.Drawing.Point(60, 306);
+            this.DgCliente.Name = "DgCliente";
+            this.DgCliente.Size = new System.Drawing.Size(445, 116);
+            this.DgCliente.TabIndex = 1;
+            this.DgCliente.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // TxtTelefono
             // 
@@ -184,21 +188,23 @@
             this.BtnEliminar.TabIndex = 9;
             this.BtnEliminar.Text = "ELIMINAR";
             this.BtnEliminar.UseVisualStyleBackColor = true;
+            this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
             // 
-            // ACTUALIZAR
+            // BtnActualizarClientes
             // 
-            this.ACTUALIZAR.AutoSize = true;
-            this.ACTUALIZAR.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ACTUALIZAR.Depth = 0;
-            this.ACTUALIZAR.Icon = null;
-            this.ACTUALIZAR.Location = new System.Drawing.Point(554, 123);
-            this.ACTUALIZAR.MouseState = MaterialSkin.MouseState.HOVER;
-            this.ACTUALIZAR.Name = "ACTUALIZAR";
-            this.ACTUALIZAR.Primary = true;
-            this.ACTUALIZAR.Size = new System.Drawing.Size(103, 36);
-            this.ACTUALIZAR.TabIndex = 10;
-            this.ACTUALIZAR.Text = "ACTUALIZAR";
-            this.ACTUALIZAR.UseVisualStyleBackColor = true;
+            this.BtnActualizarClientes.AutoSize = true;
+            this.BtnActualizarClientes.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BtnActualizarClientes.Depth = 0;
+            this.BtnActualizarClientes.Icon = null;
+            this.BtnActualizarClientes.Location = new System.Drawing.Point(554, 123);
+            this.BtnActualizarClientes.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BtnActualizarClientes.Name = "BtnActualizarClientes";
+            this.BtnActualizarClientes.Primary = true;
+            this.BtnActualizarClientes.Size = new System.Drawing.Size(103, 36);
+            this.BtnActualizarClientes.TabIndex = 10;
+            this.BtnActualizarClientes.Text = "ACTUALIZAR";
+            this.BtnActualizarClientes.UseVisualStyleBackColor = true;
+            this.BtnActualizarClientes.Click += new System.EventHandler(this.ACTUALIZAR_Click);
             // 
             // BtnNuevo
             // 
@@ -247,15 +253,29 @@
             this.BtnSalirClientes.UseVisualStyleBackColor = true;
             this.BtnSalirClientes.Click += new System.EventHandler(this.BtnSalirClientes_Click);
             // 
+            // TxtIdCliente
+            // 
+            this.TxtIdCliente.Location = new System.Drawing.Point(60, 35);
+            this.TxtIdCliente.Name = "TxtIdCliente";
+            this.TxtIdCliente.Size = new System.Drawing.Size(21, 20);
+            this.TxtIdCliente.TabIndex = 14;
+            this.TxtIdCliente.Text = "null";
+            this.TxtIdCliente.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // MensajeError
+            // 
+            this.MensajeError.ContainerControl = this;
+            // 
             // FrmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.TxtIdCliente);
             this.Controls.Add(this.BtnSalirClientes);
             this.Controls.Add(this.BtnBuscar);
             this.Controls.Add(this.BtnNuevo);
-            this.Controls.Add(this.ACTUALIZAR);
+            this.Controls.Add(this.BtnActualizarClientes);
             this.Controls.Add(this.BtnEliminar);
             this.Controls.Add(this.TxtBuscarCliente);
             this.Controls.Add(this.TxtEmail);
@@ -263,11 +283,13 @@
             this.Controls.Add(this.TxtDocumento);
             this.Controls.Add(this.TxtDireccion);
             this.Controls.Add(this.TxtTelefono);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.DgCliente);
             this.Controls.Add(this.materialLabel1);
             this.Name = "FrmClientes";
             this.Text = "FrmClientes";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.FrmClientes_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.DgCliente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MensajeError)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -276,7 +298,7 @@
         #endregion
 
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DgCliente;
         private MaterialSkin.Controls.MaterialSingleLineTextField TxtTelefono;
         private MaterialSkin.Controls.MaterialSingleLineTextField TxtDireccion;
         private MaterialSkin.Controls.MaterialSingleLineTextField TxtDocumento;
@@ -284,9 +306,11 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField TxtEmail;
         private MaterialSkin.Controls.MaterialSingleLineTextField TxtBuscarCliente;
         private MaterialSkin.Controls.MaterialRaisedButton BtnEliminar;
-        private MaterialSkin.Controls.MaterialRaisedButton ACTUALIZAR;
+        private MaterialSkin.Controls.MaterialRaisedButton BtnActualizarClientes;
         private MaterialSkin.Controls.MaterialRaisedButton BtnNuevo;
         private MaterialSkin.Controls.MaterialRaisedButton BtnBuscar;
         private MaterialSkin.Controls.MaterialRaisedButton BtnSalirClientes;
+        private System.Windows.Forms.TextBox TxtIdCliente;
+        private System.Windows.Forms.ErrorProvider MensajeError;
     }
 }
