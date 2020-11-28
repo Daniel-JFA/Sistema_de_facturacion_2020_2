@@ -64,7 +64,7 @@ namespace Sistema_de_facturacion_2020_2
                 }
                 else
                 {
-                    MessageBox.Show("Nea usted no tiene autorizacion: " + res+TxtUsuario.Text+TxtPassword.Text);
+                    MessageBox.Show("no tiene autorizacion: " + res+TxtUsuario.Text+TxtPassword.Text);
                     TxtPassword.Text = "";
                     TxtUsuario.Text = "";
                     TxtUsuario.Focus();

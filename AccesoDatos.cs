@@ -30,7 +30,7 @@ namespace Sistema_de_facturacion_2020_2
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Pana fallo conexion, se le olvido programar abriendo base de datos?"+ ex);
+                MessageBox.Show("fallo conexion"+ ex);
             }
         }
 
@@ -42,7 +42,7 @@ namespace Sistema_de_facturacion_2020_2
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Pana fallo cerrando la conexion, se le olvido programar cerrando base de datos?" + ex);
+                MessageBox.Show("fallo cerrando la conexion" + ex);
             }
         }
 
