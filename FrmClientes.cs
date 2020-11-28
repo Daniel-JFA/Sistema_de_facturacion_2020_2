@@ -40,9 +40,17 @@ namespace Sistema_de_facturacion_2020_2
                 {
 
                     AccesoDatos Acceso = new AccesoDatos();
-                    string sentencia = $"EXEC [actualizar_cliente] '{TxtIdCliente.Text}','{TxtNombreCliente.Text}','{TxtDocumento.Text}','{TxtDireccion.Text}','{TxtTelefono.Text}','{TxtEmail.Text}','Daniel','{DateTime.Now.ToShortDateString()}'";
-                    MessageBox.Show(Acceso.EjecutarComando(sentencia));
+                    string sentencia = "";
+                    if (TxtIdCliente.Text == "null")
+                    {
+                       sentencia = $"INSERT INTO TblClientes (strNombre,NumDocumento,StrDireccion,StrTelefono,StrEmail,DtmFechaModifica,StrUsuarioModifico) VALUES ('{TxtNombreCliente.Text}','{TxtDocumento.Text}','{TxtDireccion.Text}','{TxtTelefono.Text}','{TxtEmail.Text}','{DateTime.Now.ToShortDateString()}','daniel')";
+                    }
+                    else 
+                    { 
+                     sentencia  = $"EXEC [actualizar_Cliente] '{TxtNombreCliente.Text}','{TxtDocumento.Text}','{TxtDireccion.Text}','{TxtTelefono.Text}','{TxtEmail.Text}','{DateTime.Now.ToShortDateString()}','prueba'";
+                    }
                     LlenarGrid();
+                    MessageBox.Show(Acceso.EjecutarComando(sentencia));
                     actualizado = true;
                 }
                 catch (Exception ex)
@@ -96,7 +104,7 @@ namespace Sistema_de_facturacion_2020_2
 
         private void BtnNuevo_Click(object sender, EventArgs e)
         {
-
+            Nuevo();
         }
 
         private void FrmClientes_Load(object sender, EventArgs e)
@@ -116,6 +124,18 @@ namespace Sistema_de_facturacion_2020_2
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void DgCliente_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            int PosActual = 0;
+            TxtIdCliente.Text = DgCliente[0, PosActual].Value.ToString();
+            TxtNombreCliente.Text = DgCliente[1, PosActual].Value.ToString();
+            TxtDocumento.Text = DgCliente[2, PosActual].Value.ToString();
+            TxtDireccion.Text = DgCliente[3, PosActual].Value.ToString();
+            TxtTelefono.Text = DgCliente[4, PosActual].Value.ToString();
+            TxtEmail.Text = DgCliente[5, PosActual].Value.ToString();
 
         }
     }

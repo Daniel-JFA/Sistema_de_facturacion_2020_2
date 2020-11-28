@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Linq.Expressions;
+//using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using System.Security.Cryptography.X509Certificates;
+//using System.Security.Cryptography.X509Certificates;
 
 namespace Sistema_de_facturacion_2020_2
 {
@@ -25,7 +25,7 @@ namespace Sistema_de_facturacion_2020_2
             try
             {
                 //conexion = new SqlConnection("Data Source=DESKTOP-M6DBLTR; Initial Catalog=[DbFacturas];Integrated Security=true");
-                SqlConnection conexion = new SqlConnection(@"Data Source=.;Initial Catalog=DbFacturas;Integrated Security=True");
+                conexion = new SqlConnection(@"Data Source=.;Initial Catalog=DbFacturas;Integrated Security=True");
                 conexion.Open();
             }
             catch (Exception ex)
@@ -40,9 +40,9 @@ namespace Sistema_de_facturacion_2020_2
             {
                 conexion.Close();
             }
-            catch (Exception pp)
+            catch (Exception ex)
             {
-                MessageBox.Show("Pana fallo cerrando la conexion, se le olvido programar cerrando base de datos?" + pp);
+                MessageBox.Show("Pana fallo cerrando la conexion, se le olvido programar cerrando base de datos?" + ex);
             }
         }
 
@@ -85,8 +85,6 @@ namespace Sistema_de_facturacion_2020_2
         {
             try
             {
-                SqlConnection conexion = new SqlConnection(@"Data Source=.;Initial Catalog=DbFacturas;Integrated Security=True");
-                conexion.Open();
                 AbrirBd();
                 string Sql = "SELECT * FROM " + tabla + " " + strCondicion;
                 da = new SqlDataAdapter(Sql, conexion);
@@ -94,7 +92,7 @@ namespace Sistema_de_facturacion_2020_2
                 da.Fill(ds, tabla);
                 DataTable dt = new DataTable();
                 dt = ds.Tables[tabla];
-                //CerrarBd();
+                CerrarBd();
                 return dt;
              }
             catch(Exception ex)
@@ -107,15 +105,16 @@ namespace Sistema_de_facturacion_2020_2
         public string EjecutarComando(string sentencia)
         {
             string salida = "los datos se actualizaron correctamente";
+
             try 
             {
-                SqlConnection conexion = new SqlConnection(@"Data Source=.;Initial Catalog=DbFacturas;Integrated Security=True");
-                conexion.Open();
+                
                 int retornado;
                 AbrirBd();
                 cmd = new SqlCommand(sentencia, conexion);
                 retornado = cmd.ExecuteNonQuery();
-                //CerrarBd();
+                conexion.Close();
+                CerrarBd();
                 if (retornado > 0)
                 {
                     salida = "ok";
